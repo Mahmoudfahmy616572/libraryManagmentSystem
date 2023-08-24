@@ -1,0 +1,22 @@
+{% extends 'books/layout/base.html' %}
+
+{% load static %}
+{% block 'title'%}{{books.name}} info{%endblock%}
+
+{% block 'content' %}
+
+<h1 style="text-align: center; color: #00d09b; font-family: unset">{{books.name}} Information</h1>
+    <div class="card" style="width: 30rem; text-align: center; margin: auto ; height: auto ;" >
+  <img src="{{books.get_image_urls}}" class="card-img-top" alt="...">
+      </div>
+  <div class="card" style="margin-left: auto; text-align: center">
+    <h5 class="card-title" >{{books.name}}</h5>
+    <h5 class="card-title"><b>Book Information </b>:{{books.info}}</h5>
+    <h5 class="card-title"><b>Price(EGP): </b>{{books.price}}</h5>
+    <h5 class="card-title"><b>Auther :</b>>{{books.auther}}</h5>
+    <h5 class="card-title"><b>Book borrowed :</b>>{{books.borrowed}}</h5>
+
+    <a href="{% url 'books.index'%}" class="btn btn-primary">Go Back</a>
+  </div>
+
+{% endblock %}

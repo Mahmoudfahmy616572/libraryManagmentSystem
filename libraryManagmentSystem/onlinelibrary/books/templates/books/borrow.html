@@ -1,0 +1,53 @@
+{% extends 'books/layout/base.html' %}
+{% load static %}
+{% block 'title'%}borrow book{%endblock%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <link rel="stylesheet" href="{% static 'books/bootstrap/css/bootstrap.css'%}">-->
+</head>
+<body>
+{% block 'content' %}
+
+    <h1 style="text-align: center">borrow The Book {{Book.name}}</h1>
+<form action="" method="post">
+    {% csrf_token %}
+<!--  <div class="mb-3">-->
+<!--    <label  class="form-label">your Name</label>-->
+<!--    <input type="text" name="name" value="{{book.name}}"  class="form-control">-->
+<!--  </div>-->
+
+
+  <div class="mb-3">
+    <label  class="form-label">Price</label>
+    <input type="number" name="price" value="{{book.price}}" class="form-control" aria-disabled="true" readonly>
+  </div>
+
+
+<!--      <div class="mb-3">-->
+<!--    <label  class="form-label">Image</label>-->
+<!--    <img src="{{books.get_image_urls}}" class="card-img-top" alt="...">-->
+<!--  </div>-->
+
+    <div class="mb-3">
+    <label  class="form-label">book info</label>
+    <input type="text" name="info" value="{{book.info}}" class="form-control" readonly>
+  </div>
+    <div class="mb-3 form-check">
+        {% if book.borrow %}
+        <input type="checkbox" name="borrow" checked  class="form-check-input" id="exampleCheck1">
+        {% else %}
+        <input type="checkbox" name="borrow"  class="form-check-input" id="exampleCheck1">
+        {% endif %}
+    <label class="form-check-label" for="exampleCheck1">want borrow?</label>
+  </div>
+  <button type="submit" class="btn btn-primary" href="{% url 'books.index' %}">Done</button>
+</form>
+
+{% endblock %}
+<!--        <script  src="{% static 'books/bootstrap/js/bootstrap.js'%}"> </script>-->
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% extends 'books/layout/base.html' %}
+{% load static %}
+{% block 'title'%}All books {%endblock%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'books/bootstrap/css/bootstrap.css'%}">
+</head>
+<body >
+{% block 'content' %}
+<!--    <div class="container" >-->
+        <h1 style="text-align: center ; color: #00d09b"> Our Books </h1>
+<!--        <div style="font-size: larger">-->
+<!--            <table  class="table" >-->
+<!--                <tr> <th>Id</th> <th>Name</th> <th>Image</th> <th>Show</th> <th>Booked</th> </tr>-->
+<div style="display: flex; flex-wrap: wrap; " >
+                {%for book in books%}
+<!--                   <tr>-->
+<!--                       <td>{{book.id}}</td>-->
+<!--                       <td>{{book.name}}</td>-->
+<!--                       <td> <img src="{{book.get_image_urls}}" width="100" height="100"> </td>-->
+<!--                       <td> <a href="{{book.get_show_url}}" class="btn btn-outline-dark">Show Details</a> </td>-->
+<!--                       <td> <a href="{{book.get_borrow_url}}" class="btn btn-outline-primary" >Borrow a book</a> </td>-->
+
+<!--                   </tr>-->
+                    <div class="card m-4" style="width: 18rem;">
+                        <img src="{{book.get_image_urls}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{book.name}}</h5>
+                            <p class="card-text"> {{book.info}}</p>
+                            <a href="{{book.get_show_url}}" class="btn btn-outline-dark">Show Details</a>
+
+                            <a href="{{book.get_borrow_url}}" class="btn btn-outline-primary mt-2" >Borrow a book</a>
+                        </div>
+                    </div>
+                {% endfor %}
+</div>
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+{% endblock %}
+<!--        <script  src="{% static 'books/bootstrap/js/bootstrap.js'%}"> </script>-->
+
+</body>
+</html>

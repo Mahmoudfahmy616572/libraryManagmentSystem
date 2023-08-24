@@ -1,0 +1,28 @@
+{% extends 'books/layout/base.html' %}
+
+{% load static %}
+{% block 'title'%}{{user.username}} profile{%endblock%}
+{% block 'content' %}
+    <div class="card" >
+  <div class="media">
+      <img src="{{user.profile.image.url}}" class="rounded-circle account-image mt-3" height="100" width="100" >
+      <div class="media-body">
+          <h2 class="account-heading ml-5 mt-4"> User Name: {{ user.username }}</h2>
+          <p class="text-secondary ml-5 mt-3"> E-mail: {{user.email}}</p>
+      </div>
+  </div>
+        <form method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="color: #0f6674"> <b>Profile Info Updating:</b></legend>
+                {{ u_form.as_p }}
+                {{ p_form.as_p }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </div>
+        </form>
+</div>
+
+
+{% endblock %}
